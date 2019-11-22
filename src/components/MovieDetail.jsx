@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 class MovieDetail extends Component {
+    closeDetail = () => {
+        console.log("close detail");
+    }
     state = {}
     render() {
         return (
@@ -24,7 +27,7 @@ class MovieDetail extends Component {
                         </ul>
                     </div>
                     <div className="col-md-4 p-0">
-                        <button type="button" className="close" aria-label="Close">
+                        <button type="button" onClick={this.closeDetail} className="close" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         Comments

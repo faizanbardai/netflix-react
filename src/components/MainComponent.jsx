@@ -69,7 +69,10 @@ class MainComponent extends Component {
             <>
                 <NavBar searchFn={this.search} searchKeyword={this.state.searchKeyword} />
                 <div className="container-fluid">
-                    
+                    {/* To Do */}
+                    {/* Create component to fetch data */}
+                    {/* Detail will receive ID and fetch all the details. */}
+                    {/* Single movie will receive the ID and Image URL */}
                     <div className="container">
                         {this.state.selectedMovie && <MovieDetail movie={this.state.selectedMovie} />}
                         {this.state.inTheaterShow && <InTheater selectMovieFn={this.movieDetail} inTheater={this.state.inTheater} />}

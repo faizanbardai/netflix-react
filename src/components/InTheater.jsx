@@ -6,7 +6,7 @@ class inTheater extends Component {
         return (
             <>
                 <h3 className="display-4">In Theater</h3>
-                <div class="row">
+                <div className="row">
                     {this.props.inTheater.map((movie, index) => <SingleMovie movie={movie} key={index} onClickFn={this.props.selectMovieFn}/>)}
                 </div>
             </>

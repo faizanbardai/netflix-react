@@ -7,7 +7,12 @@ class MovieDetail extends Component {
             <div>
                 <div className="row my-2">
                     <div className="col-12 col-sm-3 col-md-4 p-0">
-                        <img src={this.props.movie.Poster} alt={this.props.movie.Title} style={{ width: "100%" }}></img>
+                        <img 
+                            src={this.props.movie.Poster} 
+                            className = "img-thumbnail"
+                            alt={this.props.movie.Title} 
+                            style={{ width: "100%" }}>                                
+                        </img>
                     </div>
                     <div className="col-12 col-sm-9 col-md-4 p-0">
                         <ul className="list-group list-group-flush">

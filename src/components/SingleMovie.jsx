@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 class SingleMovie extends Component {
     state = {};
     showDetail = () => {
-        console.log("Movie clicked");
-        console.log(this.props.movie.imdbID);
         this.props.onClickFn(this.state.movie);
     }
     componentDidMount = async () => {
@@ -30,8 +28,8 @@ class SingleMovie extends Component {
         if (this.state.movie) {
             let movie = this.state.movie;
             return (
-                <div className="col-6 col-sm-4 col-md-3 col-lg-2 card-xl-1" style={{ width: "18rem" }} onClick={this.showDetail}>
-                    <img src={movie.Poster} className="card-img-top" alt={movie.Title} />
+                <div className="col-6 col-sm-4 col-md-3 col-lg-2 px-1" onClick={this.showDetail}>
+                    <img src={movie.Poster} style={{ width: "100%" }} className="mb-2" alt={movie.Title} />
                 </div>
             )
         } else {

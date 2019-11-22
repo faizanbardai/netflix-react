@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
 import NavBar from './NavBar';
 import InTheater from './InTheater';
 import SearchResult from './SearchResult';
@@ -67,13 +66,17 @@ class MainComponent extends Component {
 
     render() {
         return (
-            <Container>
+            <>
                 <NavBar searchFn={this.search} searchKeyword={this.state.searchKeyword} />
-                {this.state.selectedMovie && <MovieDetail movie={this.state.selectedMovie} />}
-                {this.state.inTheaterShow && <InTheater selectMovieFn={this.movieDetail} inTheater={this.state.inTheater} />}
-                {this.state.searchArray && <SearchResult selectMovieFn={this.movieDetail} searchQuery={this.state.searchKeyword} searchArray={this.state.searchArray.Search} />}
-
-            </Container>
+                <div className="container-fluid">
+                    
+                    <div className="container">
+                        {this.state.selectedMovie && <MovieDetail movie={this.state.selectedMovie} />}
+                        {this.state.inTheaterShow && <InTheater selectMovieFn={this.movieDetail} inTheater={this.state.inTheater} />}
+                        {this.state.searchArray && <SearchResult selectMovieFn={this.movieDetail} searchQuery={this.state.searchKeyword} searchArray={this.state.searchArray.Search} />}
+                    </div>
+                </div>
+            </>
         );
     }
 }

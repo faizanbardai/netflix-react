@@ -8,7 +8,7 @@ class inTheater extends Component {
             <>
                 <h3 className="display-4">In Theater</h3>
                 <Row>
-                    {this.props.inTheater.map(movieID => <SingleMovie movie={movieID} />)}
+                    {this.props.inTheater.map((movie, index) => <SingleMovie movie={movie} key={index} onClickFn={this.props.selectMovieFn}/>)}
                 </Row>
             </>
         );

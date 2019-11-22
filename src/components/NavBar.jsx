@@ -1,55 +1,29 @@
-import React, { useState } from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem  
-} from 'reactstrap';
+import React, { Component } from 'react';
 
-const Example = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
-
-  return (
-    <div>
-      <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="">FayJu-flix</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="">Movies</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="">TV Shows</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Profile
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Account
-                </DropdownItem>
-                <DropdownItem>
-                  Billing
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-          
-        </Collapse>
-      </Navbar>
-    </div>
-  );
+class NavBar extends Component {
+  stopRefresh(e){
+    e.preventDefault();
+  }
+  render() {
+    return (
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+        <a className="navbar-brand" href="index.html">FayJu Flix</a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <a className="nav-link" href="index.html/tv-shows">TV Shows</a>
+            </li>
+            <form className="form-inline" onSubmit={this.stopRefresh.bind(this)}>
+              <input className="form-control mr-sm-2" onKeyUp={this.props.searchFn} type="search" placeholder="Search movies" aria-label="Search"></input>
+            </form>
+          </ul>
+        </div>
+      </nav >
+    );
+  }
 }
 
-export default Example;
+export default NavBar;

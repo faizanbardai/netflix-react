@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 class SingleMovie extends Component {
     state = {};
     showDetail = () => {
-        this.props.onClickFn(this.state.movie);
+        const { onClickFn } = this.props;
+        const { movie } = this.state;
+        onClickFn(movie);
     }
     componentDidMount = async () => {
 

@@ -61,6 +61,7 @@ class MainComponent extends Component {
             }
         }
     }
+    
     componentDidMount = () => {
     }
 

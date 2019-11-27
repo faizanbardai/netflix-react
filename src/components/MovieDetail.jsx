@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import OMDBGETimdbID from '../API/OMDB-GET-imdbID';
+import MovieComments from './MovieComments';
 
 class MovieDetail extends Component {
     state = {
@@ -28,11 +29,8 @@ class MovieDetail extends Component {
                                 <li className="list-group-item">{this.state.movie.Plot}</li>
                             </ul>
                         </div>
-                        <div className="col-md-4 p-0">
-                            <button type="button" className="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            Comments
+                        <div className="col-md-4 p-0">                            
+                            <MovieComments movieID={this.state.movie.imdbID} />
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ class SingleMovie extends Component {
         if (this.state.movie) {
             let movie = this.state.movie;
             return (
-                <div className="col-6 col-sm-4 col-md-4 col-lg-1 px-1">
+                <div className="col-4 col-sm-3 col-md-2 px-1">
                     <Link to={"/movie-detail/" + this.state.movie.imdbID}>
                         <img src={movie.Poster} style={{ width: "100%" }} className="mb-2" alt={movie.Title} />
                     </Link>

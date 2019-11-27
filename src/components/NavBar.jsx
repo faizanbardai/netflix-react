@@ -11,7 +11,7 @@ class NavBar extends Component {
   }
   render() {
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+      <nav className="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
         <Link className="navbar-brand" to="/">FayJu Flix</Link>
         <button
           className="navbar-toggler"

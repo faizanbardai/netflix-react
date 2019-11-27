@@ -1,21 +1,24 @@
 import React from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
-
+import DELETEComment from "../API/DELETEComment";
 
 const SingleComment = (props) => {
-    console.log(props)
+    const deleteComment = async (commentID) => {
+        await DELETEComment(commentID);
+        props.updateFn();
+    }
     let comment = props.comment;
     return (
-        <li className="list-group-item">
+        <button onClick={() => { deleteComment(comment._id) }} className="list-group-item list-group-item-action list-group-item-light">
             <div className="d-flex justify-content-between align-items-center">
                 {comment.comment}
-                <span class="badge badge-primary badge-pill">{comment.rate}</span>
+                <span className="badge badge-primary badge-pill">{comment.rate}</span>
             </div>
-            <footer class="blockquote-footer">
-                by {comment.author} <Moment fromNow>{comment.createdAt}</Moment>
+            <footer className="blockquote-footer">
+                by {comment.author} <Moment fromNow>{comment.updatedAt}</Moment>
             </footer>
-        </li>        
+        </button>
     )
 }
 

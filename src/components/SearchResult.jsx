@@ -10,16 +10,27 @@ class SearchResult extends Component {
     render() {
         let { searchQuery } = this.state;
         let { searchArray } = this.state;
-        if (!this.state.loading) {
+        if (this.state.loading) {
+            return (
+                <div className="spinner-grow" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            )
+        } else {
             return (
                 <>
                     <h3 className="display-4">Search: {searchQuery}</h3>
                     <div className="row">
                         {searchArray.Search.map((movie, index) => {
                             return (
-                                <div key={index.toString()} className="col-6 col-sm-4 col-md-4 col-lg-1 px-1">
+                                <div key={index.toString()} className="col-6 col-sm-4 col-md-3 col-lg-2 px-1">
                                     <Link to={"/movie-detail/" + movie.imdbID}>
-                                        <img src={movie.Poster} style={{ width: "100%" }} className="mb-2" alt={movie.Title} />
+                                        <img 
+                                            src={movie.Poster === "N/A"? "https://via.placeholder.com/300x445": movie.Poster} 
+                                            style={{ width: "100%" }} 
+                                            className="mb-2" 
+                                            alt={movie.Title} 
+                                        />
                                     </Link>
                                 </div>
                             )
@@ -27,16 +38,9 @@ class SearchResult extends Component {
                     </div>
                 </>
             )
-        } else {
-            return (
-                <div className="spinner-grow" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-            )
         }
     }
     componentDidMount = async () => {
-        console.log("Component did mount.")
         let searchQuery = this.props.match.params.searchQuery;
         let searchArray = await OMDBGETSearch(searchQuery)
         this.setState({
@@ -45,7 +49,6 @@ class SearchResult extends Component {
         })
     }
     componentDidUpdate = async (prevProps) => {
-        console.log("Component did update.")
         if (this.props.location.pathname !== prevProps.location.pathname) {
             let searchQuery = this.props.match.params.searchQuery;
             let searchArray = await OMDBGETSearch(searchQuery)

@@ -2,32 +2,49 @@ import React, { Component } from 'react';
 import POSTComment from '../API/POSTComment';
 
 class WriteComment extends Component {
+    captureComment = (e) => {
+        e.preventDefault();
+        let commentObject = {
+            "comment": document.querySelector("#comment").value,
+            "rate": document.querySelector("#rating").value,
+            "elementId": this.props.movieID
+        };
+        POSTComment(commentObject);
+        document.querySelector("#comment").value="";
+        document.querySelector("#rating").value=5;
+        this.props.updateFn();
+    }
+    activateSubmit = () => {
+
+    }
     render() {
         return (
-            <form>
-                <div class="form-group">
+            <form onSubmit={this.captureComment}>
+                <div className="form-group">
                     {/* <label for="comment">Example textarea</label> */}
                     <textarea
-                        class="form-control mb-2"
+                        required
+                        onChange={this.activateSubmit}
+                        className="form-control mb-2"
                         id="comment"
                         rows="3"
                         placeholder="Write a new comment..."
                     >
                     </textarea>
-                    <div class="input-group">
-                        <select 
-                            class="custom-select" 
-                            id="inputGroupSelect04" 
+                    <div className="input-group">
+                        <select
+                            className="custom-select"
+                            id="rating"
                             aria-label="Example select with button addon">
-                            <option selected>Rating</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                            <option value="4">Four</option>
+                            {/* <option selected>Rating</option> */}
                             <option value="5">Five</option>
+                            <option value="4">Four</option>
+                            <option selected value="3">Three</option>
+                            <option value="2">Two</option>
+                            <option value="1">One</option>
                         </select>
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="submit">Submit</button>
+                        <div className="input-group-append">
+                            <button className="btn btn-outline-secondary" type="submit">Submit</button>
                         </div>
                     </div>
                 </div>

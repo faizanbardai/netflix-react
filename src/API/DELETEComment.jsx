@@ -6,11 +6,11 @@ const headers = new Headers({
     "Content-Type": "application/json"
 });
 
-const GETComments = async (imdbID) => {
-    let URL = "https://strive-school-testing-apis.herokuapp.com/api/comments/".concat(imdbID);
+const GETComments = async (commentID) => {
+    let URL = "https://strive-school-testing-apis.herokuapp.com/api/comments/".concat(commentID);
     try {
         let response = await fetch(URL, {
-            method: "GET",
+            method: "DELETE",
             headers
         })
         if (response.ok) {

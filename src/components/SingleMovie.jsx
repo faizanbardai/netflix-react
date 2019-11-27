@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import OMDBGETimdbID from '../API/OMDB-GET-imdbID';
 class SingleMovie extends Component {
-    state = {};
-    componentDidMount = async () => {
-        let movieID = this.props.movie.imdbID;
-        let movie = await OMDBGETimdbID(movieID);
-        this.setState({
-            movie: movie
-        })
-    }
+    state = {
+        loading: true
+    };
     render() {
-        if (this.state.movie) {
-            let movie = this.state.movie;
+        let {movie, loading} = this.state;
+        if (loading) {
+            return (
+                <div className="spinner-grow" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            );
+        } else {
             return (
                 <div className="col-4 col-sm-3 col-md-2 px-1">
                     <Link to={"/movie-detail/" + this.state.movie.imdbID}>
@@ -20,11 +21,15 @@ class SingleMovie extends Component {
                     </Link>
                 </div>
             )
-        } else {
-            return (
-                <div>No Movie Available.</div>
-            )
         }
+    }
+    componentDidMount = async () => {
+        let movieID = this.props.movie.imdbID;
+        let movie = await OMDBGETimdbID(movieID);
+        this.setState({
+            movie: movie,
+            loading: false
+        })
     }
 };
 export default SingleMovie;

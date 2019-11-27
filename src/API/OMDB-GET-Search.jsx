@@ -1,5 +1,5 @@
 const OMDBGETSearch = async (searchQuery) => {
-    let URL = "http://www.omdbapi.com/?apikey=251ff3f5&s=".concat(searchQuery);
+    let URL = "https://www.omdbapi.com/?apikey=251ff3f5&s=".concat(searchQuery);
         try {
             let response = await fetch(URL, {
                 method: "GET"

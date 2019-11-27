@@ -1,17 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SingleMovie from './SingleMovie';
 
-class inTheater extends Component {
-    render() {
-        return (
-            <>
-                <h3 className="display-4">In Theater</h3>
-                <div className="row">
-                    {this.props.inTheater.map((movie, index) => <SingleMovie movie={movie} key={index} onClickFn={this.props.selectMovieFn}/>)}
-                </div>
-            </>
-        );
-    }
+const inTheater = [
+    {
+        "imdbID": "tt7286456",
+    },
+    {
+        "imdbID": "tt9248934"
+    },
+    {
+        "imdbID": "tt1025100"
+    },
+    {
+        "imdbID": "tt4520988"
+    },
+    {
+        "imdbID": "tt9763442"
+    }];
+
+const inTheaterSection = () => {
+    return (
+        <>
+            <h3 className="display-4">In Theater</h3>
+            <div className="row">
+                {inTheater.map((movie, index) => <SingleMovie movie={movie} key={index} />)}
+            </div>
+        </>
+    );
 }
 
-export default inTheater;
+export default inTheaterSection;

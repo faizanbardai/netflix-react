@@ -1,49 +1,30 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import OMDBGETimdbID from '../API/OMDB-GET-imdbID';
 class SingleMovie extends Component {
     state = {};
-    showDetail = () => {
-        const { onClickFn } = this.props;
-        const { movie } = this.state;
-        onClickFn(movie);
-    }
     componentDidMount = async () => {
-
-        let URL = "http://www.omdbapi.com/?apikey=251ff3f5&i=".concat(this.props.movie.imdbID);
-        try {
-            let response = await fetch(URL, {
-                method: "GET"
-            })
-            if (response.ok) {
-                this.setState(
-                    {
-                        movie: await response.json()
-                    }
-                )
-            }
-        } catch (error) {
-            console.log(error);
-        }
-
+        let movieID = this.props.movie.imdbID;
+        let movie = await OMDBGETimdbID(movieID);
+        this.setState({
+            movie: movie
+        })
     }
-
     render() {
         if (this.state.movie) {
             let movie = this.state.movie;
             return (
-                <div className="col-6 col-sm-4 col-md-3 col-lg-2 px-1" onClick={this.showDetail}>
-                    <img src={movie.Poster} style={{ width: "100%" }} className="mb-2" alt={movie.Title} />
+                <div className="col-6 col-sm-4 col-md-4 col-lg-1 px-1">
+                    <Link to={"/movie-detail/" + this.state.movie.imdbID}>
+                        <img src={movie.Poster} style={{ width: "100%" }} className="mb-2" alt={movie.Title} />
+                    </Link>
                 </div>
             )
         } else {
             return (
-                <div></div>
+                <div>No Movie Available.</div>
             )
         }
     }
-}
-
-
-
-
-
+};
 export default SingleMovie;

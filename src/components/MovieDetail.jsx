@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import OMDBGETimdbID from '../API/OMDB-GET-imdbID';
 
 class MovieDetail extends Component {
-    state = {}
+    state = {
+        loading: true
+    }
    
     render() {
-        if(this.state.movie) {
+        if(!this.state.loading) {
             return (
                 <div>
                     <div className="row my-2 justify-content-center">
@@ -36,7 +38,11 @@ class MovieDetail extends Component {
                 </div>
             );
         } else {
-            return (<div>No movie available.</div>)
+            return (
+                <div className="spinner-grow" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            )
         }
         
     }
@@ -47,7 +53,8 @@ class MovieDetail extends Component {
         let movie = await OMDBGETimdbID(movieID);
         this.setState({
             movieID: movieID,
-            movie: movie
+            movie: movie,
+            loading: false
         })
     }
 
@@ -59,9 +66,10 @@ class MovieDetail extends Component {
         if(prevProps !== this.props) {
             console.log("Previous Props: ", prevProps);
             console.log("New Props: ", this.props);
-        }
+        }        
         let movieID = this.props.match.params.movieId;
         if(movieID !== this.state.movieID) {
+            this.setState({ loading: true });
             let movie = await OMDBGETimdbID(movieID);
             this.setState({
                 movieID: movieID,

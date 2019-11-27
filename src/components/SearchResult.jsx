@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import OMDBGETSearch from '../API/OMDB-GET-Search';
 
 class SearchResult extends Component {
-    state = {}
+    state = {
+        loading: true
+    }
     render() {
         let { searchQuery } = this.state;
         let { searchArray } = this.state;
-        if (searchArray) {
+        if (!this.state.loading) {
             return (
                 <>
                     <h3 className="display-4">Search: {searchQuery}</h3>
@@ -25,7 +27,11 @@ class SearchResult extends Component {
                 </>
             )
         } else {
-            return (<div>No search result found.</div>)
+            return (
+                <div className="spinner-grow" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            )
         }
     }
     componentDidMount = async () => {
@@ -34,7 +40,8 @@ class SearchResult extends Component {
         let searchArray = await OMDBGETSearch(searchQuery)
         this.setState({
             searchQuery: searchQuery,
-            searchArray: searchArray
+            searchArray: searchArray,
+            loading: false
         })
     }
 }

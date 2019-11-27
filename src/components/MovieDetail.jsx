@@ -10,17 +10,17 @@ class MovieDetail extends Component {
     render() {
         if(!this.state.loading) {
             return (
-                <div>
-                    <div className="row my-2 justify-content-center">
-                        <div className="col-8 col-sm-3 col-md-3 p-0">
+                
+                    <div className="row my-2">
+                        <div className="col-12 col-sm-3 col-md-3 p-2 text-center">
                             <img 
                                 src={this.state.movie.Poster} 
                                 className = "img-thumbnail"
                                 alt={this.state.movie.Title} 
-                                style={{ width: "100%" }}>                                
+                                style={{ width: "100%"}}>                                
                             </img>
                         </div>
-                        <div className="col-12 col-sm-9 col-md-5 p-0">
+                        <div className="col-12 col-sm-9 col-md-5 p-2">
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">Title: {this.state.movie.Title}</li>
                                 <li className="list-group-item">Year: {this.state.movie.Year}</li>
@@ -29,11 +29,11 @@ class MovieDetail extends Component {
                                 <li className="list-group-item">{this.state.movie.Plot}</li>
                             </ul>
                         </div>
-                        <div className="col-md-4 p-0">                            
+                        <div className="col-md-4 p-2">                            
                             <MovieComments movieID={this.state.movie.imdbID} />
                         </div>
                     </div>
-                </div>
+                
             );
         } else {
             return (

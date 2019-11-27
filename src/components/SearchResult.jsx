@@ -4,6 +4,7 @@ import OMDBGETSearch from '../API/OMDB-GET-Search';
 
 class SearchResult extends Component {
     state = {
+        searchQuery: this.props.match.params.searchQuery,
         loading: true
     }
     render() {
@@ -39,10 +40,20 @@ class SearchResult extends Component {
         let searchQuery = this.props.match.params.searchQuery;
         let searchArray = await OMDBGETSearch(searchQuery)
         this.setState({
-            searchQuery: searchQuery,
             searchArray: searchArray,
             loading: false
         })
+    }
+    componentDidUpdate = async (prevProps) => {
+        console.log("Component did update.")
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            let searchQuery = this.props.match.params.searchQuery;
+            let searchArray = await OMDBGETSearch(searchQuery)
+            this.setState({
+                searchQuery: searchQuery,
+                searchArray: searchArray
+            })
+        }
     }
 }
 

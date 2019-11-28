@@ -8,8 +8,7 @@ class MovieDetail extends Component {
     }
 
     render() {
-        let {loading} = this.state;
-        let {movie} = this.state;
+        let { loading, movie } = this.state;
         if (loading) {
             return (
                 <div className="spinner-grow" role="status">

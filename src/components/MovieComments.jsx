@@ -20,8 +20,7 @@ class MovieComments extends Component {
         comments: []
     }
     render() {
-        let { comments } = this.state;
-        let { loading } = this.state;
+        let { comments, loading } = this.state;
         if (loading) {
             return (
                 <div className="spinner-grow" role="status">

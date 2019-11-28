@@ -5,8 +5,8 @@ import DELETEComment from "../API/DELETEComment";
 
 const SingleComment = (props) => {
     const deleteComment = async (commentID) => {
-        await DELETEComment(commentID);
-        props.updateFn();
+        let response = await DELETEComment(commentID);
+        props.deleteComment(response);
     }
     let comment = props.comment;
     return (

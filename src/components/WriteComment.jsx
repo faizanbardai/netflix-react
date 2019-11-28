@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 import POSTComment from '../API/POSTComment';
 
 class WriteComment extends Component {
-    captureComment = (e) => {
+    
+    captureComment = async (e) => {
         e.preventDefault();
         let commentObject = {
             "comment": document.querySelector("#comment").value,
             "rate": document.querySelector("#rating").value,
             "elementId": this.props.movieID
         };
-        POSTComment(commentObject);
+        let message = await POSTComment(commentObject);
         document.querySelector("#comment").value="";
         document.querySelector("#rating").value=5;
-        this.props.updateFn();
-    }
-    activateSubmit = () => {
-
+        this.props.addComments(message);
     }
     render() {
         return (
@@ -24,7 +22,6 @@ class WriteComment extends Component {
                     {/* <label for="comment">Example textarea</label> */}
                     <textarea
                         required
-                        onChange={this.activateSubmit}
                         className="form-control mb-2"
                         id="comment"
                         rows="3"
@@ -36,7 +33,6 @@ class WriteComment extends Component {
                             className="custom-select"
                             id="rating"
                             aria-label="Example select with button addon">
-                            {/* <option selected>Rating</option> */}
                             <option value="5">Five</option>
                             <option value="4">Four</option>
                             <option selected value="3">Three</option>

@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import OMDBGETimdbID from '../API/OMDB-GET-imdbID';
+import GETComments from '../API/GETComments';
+import WriteComment from './WriteComment';
 import MovieComments from './MovieComments';
+
 
 class MovieDetail extends Component {
     state = {
-        loading: true
+        loading: true,
+        comments: []
     }
 
     render() {
-        let { loading, movie } = this.state;
+        let { loading, movie, comments } = this.state;
         if (loading) {
             return (
                 <div className="spinner-grow" role="status">
@@ -41,7 +45,8 @@ class MovieDetail extends Component {
                         </ul>
                     </div>
                     <div className="col-md-4 p-2">
-                        <MovieComments movieID={movie.imdbID} />
+                        <MovieComments comments={comments} deleteComment={this.deleteComment}/>
+                        <WriteComment movieID={movie.imdbID} addComments={this.addComments} />
                     </div>
                 </div>
             )
@@ -51,10 +56,25 @@ class MovieDetail extends Component {
     componentDidMount = async () => {
         let movieID = this.props.match.params.movieId;
         let movie = await OMDBGETimdbID(movieID);
+        let comments = await GETComments(movieID);
         this.setState({
             movieID: movieID,
             movie: movie,
+            comments: comments,
             loading: false
+        })
+    }
+    addComments = (newComment) => {
+        console.log("adding new comment and updating state");        
+        this.setState({
+            comments: this.state.comments.concat(newComment)
+        })
+    }
+
+    deleteComment = (deletedComment) => {
+        console.log("deleting comment and updating state");
+        this.setState({
+            comments: this.state.comments.filter(comment => comment._id !== deletedComment._id)
         })
     }
 

@@ -1,63 +1,28 @@
-import React, { Component } from 'react';
-import GETComments from '../API/GETComments';
+import React from 'react';
 import SingleComment from './SingleComment';
-import WriteComment from './WriteComment'
 
-class MovieComments extends Component {
-    updateComments = async () => {
-        this.setState({
-            loading: true
-        })
-        console.log("Updating State");
-        let comments = await GETComments(this.props.movieID);
-        this.setState({
-            loading: false,
-            comments: comments
-        })
-    }
-    state = {
-        loading: true,
-        comments: []
-    }
-    render() {
-        let { comments, loading } = this.state;
-        if (loading) {
-            return (
-                <div className="spinner-grow" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-            )
-        } else
-            return (
-                <>
-                    {comments.length === 0 &&
-                        <div className="alert alert-info" role="alert">
-                            No comments available. Be the first one to comment.
-                        </div>}
-                    {comments.length > 0 &&
-                        <ul className="list-group list-group-flush">
-                            {comments.map((comment, index) =>
-                                <SingleComment
-                                    key={index}
-                                    comment={comment}
-                                    updateFn={this.updateComments}
-                                />)}
-                        </ul>}
-                    <WriteComment movieID={this.props.movieID} updateFn={this.updateComments} />
-                </>
-            );
-    } 
-    componentDidMount = async () => {
-        let comments = await GETComments(this.props.movieID);
-        this.setState({
-            comments: comments,
-            loading: false
-        })
-    }
-    componentDidUpdate = () => {
-        console.log("Movie Comments Component updated");
-        console.log("Loading", this.state.loading);
-    }
+const MovieComments = (props) => {
+    let { comments, deleteComment } = props;
+    return (
+        <>
+            {comments.length === 0 ?
+                <div className="alert alert-info" role="alert">
+                    No comments available. Be the first one to comment.
+                    </div>
+                :
+                <ul className="list-group list-group-flush">
+                    {comments.map((comment, index) =>
+                        <SingleComment
+                            key={index}
+                            comment={comment}
+                            deleteComment={deleteComment}
+                        />)
+                    }
+                </ul>
+            }
+        </>
+    );
 }
+
 
 export default MovieComments;

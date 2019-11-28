@@ -51,8 +51,7 @@ class SearchResult extends Component {
 
             this.setState({
                 searchArray: searchArray,
-                loading: false,
-                error: false
+                loading: false
             })
     }
     componentDidUpdate = async (prevProps) => {

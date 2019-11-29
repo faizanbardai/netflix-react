@@ -1,5 +1,7 @@
-const username = "user24";
-const password = "48D4vaVh6Ra3DD8w";
+import authorization from './Authorization';
+const credentials = authorization();
+const username = credentials.username;
+const password = credentials.password;
 const auth = btoa(username + ":" + password);
 const headers = new Headers({
     "Authorization": "Basic " + auth,

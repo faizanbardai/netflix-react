@@ -3,7 +3,6 @@ const credentials = authorization();
 const apikey = credentials.apikey;
 const OMDBGETimdbID = async (imdbID) => {
     let URL = "https://www.omdbapi.com/?apikey=" + apikey + "i=".concat(imdbID);
-    console.log(URL);
         try {
             let response = await fetch(URL, {
                 method: "GET"

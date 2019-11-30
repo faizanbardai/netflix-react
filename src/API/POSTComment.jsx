@@ -1,5 +1,6 @@
 import authorization from './Authorization';
-const credentials = authorization();
+const credentials = authorization("striveComment");
+const baseURL = credentials.baseURL;
 const username = credentials.username;
 const password = credentials.password;
 const auth = btoa(username + ":" + password);
@@ -9,7 +10,7 @@ const headers = new Headers({
 });
 
 const GETComments = async (comment) => {
-    let URL = "https://strive-school-testing-apis.herokuapp.com/api/comments/";
+    let URL = baseURL;
         try {
             let response = await fetch(URL, {
                 method: "POST",

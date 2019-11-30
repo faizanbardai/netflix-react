@@ -1,8 +1,9 @@
 import authorization from './Authorization';
-const credentials = authorization();
+const credentials = authorization("OMDB");
 const apikey = credentials.apikey;
+const baseURL = credentials.baseURL;
 const OMDBGETimdbID = async (imdbID) => {
-    let URL = "https://www.omdbapi.com/?apikey=" + apikey + "i=".concat(imdbID);
+    let URL = baseURL + apikey + "i=".concat(imdbID);
         try {
             let response = await fetch(URL, {
                 method: "GET"

@@ -3,10 +3,28 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from './NavBar';
 import InTheater from './InTheater';
 import SearchResult from './SearchResult';
-import MovieDetail from './MovieDetail'
+import MovieDetail from './MovieDetail';
+
+
 
 
 export const MainComponent = () => {
+    const inTheater = [
+        {
+            "imdbID": "tt7286456",
+        },
+        {
+            "imdbID": "tt9248934"
+        },
+        {
+            "imdbID": "tt1025100"
+        },
+        {
+            "imdbID": "tt4520988"
+        },
+        {
+            "imdbID": "tt9763442"
+        }];
     return (
         <section>
             <Router>
@@ -14,7 +32,9 @@ export const MainComponent = () => {
                 <div className="container-fluid">
                     <div className="container">
                         <Route path="/movie-detail/:movieId" component={MovieDetail} />
-                        <Route path="/movies-in-theater" component={InTheater} />
+                        <Route path="/movies-in-theater" render={(props) => (
+                            <InTheater inTheater={inTheater} />
+                        )} />
                         <Route path="/search/:searchQuery" component={SearchResult} />
                     </div>
                 </div>

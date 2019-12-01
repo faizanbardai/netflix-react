@@ -11,9 +11,9 @@ const MovieComments = (props) => {
                     </div>
                 :
                 <ul className="list-group list-group-flush">
-                    {comments.map((comment, index) =>
+                    {comments.map((comment) =>
                         <SingleComment
-                            key={index}
+                            key={comment._id}
                             comment={comment}
                             deleteComment={deleteComment}
                         />)

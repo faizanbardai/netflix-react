@@ -24,9 +24,9 @@ class SearchResult extends Component {
                 <>
                     <h3 className="display-4">Search: {searchQuery}</h3>
                     {searchArray.Search.length > 0 && <div className="row">
-                        {searchArray.Search.map((movie, index) => {
+                        {searchArray.Search.map((movie) => {
                             return (
-                                <div key={index.toString()} className="col-6 col-sm-4 col-md-3 col-lg-2 px-1">
+                                <div key={movie.imdbID} className="col-6 col-sm-4 col-md-3 col-lg-2 px-1">
                                     <Link to={"/movie-detail/" + movie.imdbID}>
                                         <img
                                             src={movie.Poster === "N/A" ? "https://via.placeholder.com/300x445" : movie.Poster}

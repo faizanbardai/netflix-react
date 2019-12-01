@@ -23,7 +23,7 @@ const inTheaterSection = () => {
         <>
             <h3 className="display-4">In Theater</h3>
             <div className="row">
-                {inTheater.map((movie, index) => <SingleMovie movie={movie} key={index} />)}
+                {inTheater.map((movie) => <SingleMovie movie={movie} key={movie.imdbID} />)}
             </div>
         </>
     );

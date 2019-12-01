@@ -1,12 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from './NavBar';
 import InTheater from './InTheater';
 import SearchResult from './SearchResult';
 import MovieDetail from './MovieDetail';
-
-
-
 
 export const MainComponent = () => {
     const inTheater = [
@@ -31,11 +28,13 @@ export const MainComponent = () => {
                 <NavBar />
                 <div className="container-fluid">
                     <div className="container">
-                        <Route path="/movie-detail/:movieId" component={MovieDetail} />
-                        <Route path="/movies-in-theater" render={(props) => (
-                            <InTheater inTheater={inTheater} />
-                        )} />
-                        <Route path="/search/:searchQuery" component={SearchResult} />
+                        <Switch>
+                            <Route path="/movie-detail/:movieId" component={MovieDetail} />
+                            <Route path="/movies-in-theater" render={(props) => (
+                                <InTheater inTheater={inTheater} />
+                            )} />
+                            <Route path="/search/:searchQuery" component={SearchResult} />
+                        </Switch>
                     </div>
                 </div>
                 <footer className="navbar fixed-bottom navbar-dark bg-dark">

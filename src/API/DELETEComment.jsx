@@ -9,7 +9,7 @@ const headers = new Headers({
     "Content-Type": "application/json"
 });
 
-const GETComments = async (commentID) => {
+const DELETEComments = async (commentID) => {
     let URL = baseURL.concat(commentID);
     try {
         let response = await fetch(URL, {
@@ -24,4 +24,4 @@ const GETComments = async (commentID) => {
     }
 }
 
-export default GETComments;
+export default DELETEComments;

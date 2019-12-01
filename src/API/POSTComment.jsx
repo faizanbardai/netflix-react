@@ -9,7 +9,7 @@ const headers = new Headers({
     "Content-Type": "application/json"
 });
 
-const GETComments = async (comment) => {
+const POSTComments = async (comment) => {
     let URL = baseURL;
         try {
             let response = await fetch(URL, {
@@ -25,4 +25,4 @@ const GETComments = async (comment) => {
         }
 }
 
-export default GETComments;
+export default POSTComments;

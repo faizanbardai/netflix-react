@@ -11,7 +11,7 @@ const authorization = (serverName) => {
             "apikey": "251ff3f5&"
         },
         "herokuapp": {
-            "baseURL": "http://be-netflix-react-comments.herokuapp.com/comments/",
+            "baseURL": "https://be-netflix-react-comments.herokuapp.com/comments/",
         }
     };
     return credentials[serverName];

@@ -9,6 +9,9 @@ const authorization = (serverName) => {
         "OMDB": {
             "baseURL": "https://www.omdbapi.com/?apikey=",
             "apikey": "251ff3f5&"
+        },
+        "herokuapp": {
+            "baseURL": "http://localhost:3002/comments/",
         }
     };
     return credentials[serverName];

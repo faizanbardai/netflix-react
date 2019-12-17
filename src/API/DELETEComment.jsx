@@ -1,11 +1,11 @@
 import authorization from './Authorization';
-const credentials = authorization("striveComment");
+const credentials = authorization("herokuapp");
 const baseURL = credentials.baseURL;
-const username = credentials.username;
-const password = credentials.password;
-const auth = btoa(username + ":" + password);
+// const username = credentials.username;
+// const password = credentials.password;
+// const auth = btoa(username + ":" + password);
 const headers = new Headers({
-    "Authorization": "Basic " + auth,
+    // "Authorization": "Basic " + auth,
     "Content-Type": "application/json"
 });
 

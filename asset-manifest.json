@@ -1,21 +1,22 @@
 {
   "files": {
     "main.css": "/netflix-react/static/css/main.2d770bf0.chunk.css",
-    "main.js": "/netflix-react/static/js/main.7ee740e3.chunk.js",
-    "main.js.map": "/netflix-react/static/js/main.7ee740e3.chunk.js.map",
-    "runtime-main.js": "/netflix-react/static/js/runtime-main.3d7f3b15.js",
-    "runtime-main.js.map": "/netflix-react/static/js/runtime-main.3d7f3b15.js.map",
-    "static/js/2.5775fff6.chunk.js": "/netflix-react/static/js/2.5775fff6.chunk.js",
-    "static/js/2.5775fff6.chunk.js.map": "/netflix-react/static/js/2.5775fff6.chunk.js.map",
+    "main.js": "/netflix-react/static/js/main.4b885f8e.chunk.js",
+    "main.js.map": "/netflix-react/static/js/main.4b885f8e.chunk.js.map",
+    "runtime-main.js": "/netflix-react/static/js/runtime-main.1dbebfcb.js",
+    "runtime-main.js.map": "/netflix-react/static/js/runtime-main.1dbebfcb.js.map",
+    "static/js/2.2dcd1224.chunk.js": "/netflix-react/static/js/2.2dcd1224.chunk.js",
+    "static/js/2.2dcd1224.chunk.js.map": "/netflix-react/static/js/2.2dcd1224.chunk.js.map",
     "index.html": "/netflix-react/index.html",
-    "precache-manifest.34e87d5a579e18838fc20ffc9ed402f9.js": "/netflix-react/precache-manifest.34e87d5a579e18838fc20ffc9ed402f9.js",
+    "precache-manifest.2cf922ad8faa8d4df3bab0edf6ccedf8.js": "/netflix-react/precache-manifest.2cf922ad8faa8d4df3bab0edf6ccedf8.js",
     "service-worker.js": "/netflix-react/service-worker.js",
-    "static/css/main.2d770bf0.chunk.css.map": "/netflix-react/static/css/main.2d770bf0.chunk.css.map"
+    "static/css/main.2d770bf0.chunk.css.map": "/netflix-react/static/css/main.2d770bf0.chunk.css.map",
+    "static/js/2.2dcd1224.chunk.js.LICENSE": "/netflix-react/static/js/2.2dcd1224.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.3d7f3b15.js",
-    "static/js/2.5775fff6.chunk.js",
+    "static/js/runtime-main.1dbebfcb.js",
+    "static/js/2.2dcd1224.chunk.js",
     "static/css/main.2d770bf0.chunk.css",
-    "static/js/main.7ee740e3.chunk.js"
+    "static/js/main.4b885f8e.chunk.js"
   ]
 }
